@@ -24,7 +24,7 @@ const PORT = 3001 || process.env.PORT;
 if (process.env.NODE_ENV !== "test") {
   const listener: any = app.listen(PORT, () => {
     const onPort = listener.address().port;
-    console.log(`Server is running on ${onPort} 😎!`);
+    console.log(`Server is runnsing on ${onPort} 😎!`);
   });
 }
 export default app;

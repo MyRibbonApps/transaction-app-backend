@@ -9,14 +9,13 @@ import { currencyUsed } from "../../commission_rules.config";
 const router: Router = express.Router();
 
 export default router.post("/", async (req: Request, res: Response) => {
-  console.log(req.body);
-  const { transaction } = req.body;
-  const { clientID }: { clientID: number } = req.body;
-
-  const transactionAmount = parseInt(transaction.transactionAmount);
-  const transactionCurrency = transaction.transactionCurrency;
-
   try {
+    console.log(req.body);
+    const { transaction } = req.body;
+    const { clientID }: { clientID: number } = req.body;
+
+    const transactionAmount = parseInt(transaction.transactionAmount);
+    const transactionCurrency = transaction.transactionCurrency;
     // If transaction is in the specified currency, no need to convert it.
     const amount: number = transactionCurrency === currencyUsed ? transactionAmount : await convertCurrency(transactionCurrency, transactionAmount);
 

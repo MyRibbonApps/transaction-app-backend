@@ -4,9 +4,9 @@ import Transaction from "../../ts/interfaces/transaction_interface";
 const router: Router = express.Router();
 
 export default router.post("/", async (req: Request, res: Response) => {
-  const { transactionID }: { transactionID: string } = req.body.transaction;
-
   try {
+    const { transactionID }: { transactionID: string } = req.body.transaction;
+    console.log(transactionID);
     const getTransactionDetails = transactions.find((transaction: Transaction) => transaction.transactionID === transactionID);
     if (!getTransactionDetails) {
       res.status(400).send({ message: "not found", data: null });

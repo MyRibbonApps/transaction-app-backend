@@ -1,8 +1,6 @@
 import express, { Request, Response, Router } from "express";
 
-import { transactions } from "../../database/index";
 import { findTransaction } from "../../shared/utils/transaction";
-import Transaction from "../../ts/interfaces/transaction_interface";
 
 const router: Router = express.Router();
 

@@ -7,20 +7,20 @@ const exampleTransactions = [
   {
     transactionDate: new Date(),
     transactionID: "14ow41pvhl1gxphog",
-    clientID: 41,
+    clientID: 42,
     transaction: {
       currency: "USD",
       amount: 100,
     },
     commission: {
       currency: "EURO",
-      amount: 0.3,
+      amount: 0.05,
     },
   },
 ];
 const exampleClients = [
   {
-    id: 41,
+    id: 42,
     transactions: [
       {
         transactionID: "14ow41pvhl1gxphog",

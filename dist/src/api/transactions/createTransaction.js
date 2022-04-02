@@ -41,11 +41,11 @@ exports.default = router.post("/", (req, res) => __awaiter(void 0, void 0, void 
         (0, client_1.addTransactionToClientDB)(clientID, newTransaction);
         console_1.default.log("Transactions:", database_1.transactions);
         console_1.default.log("Clients:", database_1.clients);
-        res.status(200).send({ message: "sucess", data: { transactionID: newTransaction.transactionID } });
+        res.status(200).send({ message: "success", data: { transactionID: newTransaction.transactionID } });
     }
     catch (e) {
         console_1.default.log(e);
-        res.status(400).send({ message: "something went wrong" });
+        res.status(400).send({ message: "Something went wrong", data: null });
     }
     return;
 }));

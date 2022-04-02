@@ -33,10 +33,10 @@ export default router.post("/", async (req: Request, res: Response) => {
     addTransactionToClientDB(clientID, newTransaction);
     console.log("Transactions:", transactions);
     console.log("Clients:", clients);
-    res.status(200).send({ message: "sucess", data: { transactionID: newTransaction.transactionID } });
+    res.status(200).send({ message: "success", data: { transactionID: newTransaction.transactionID } });
   } catch (e) {
     console.log(e);
-    res.status(400).send({ message: "something went wrong" });
+    res.status(400).send({ message: "Something went wrong", data: null });
   }
   return;
 });

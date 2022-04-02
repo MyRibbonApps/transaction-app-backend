@@ -6,6 +6,7 @@ import { currencyUsed } from "../../commission_rules.config";
 import { getApiRequest } from "../api/index";
 import { transactions } from "../../database/index";
 import { calculateCommision } from "./commision";
+import Transaction from "../../ts/interfaces/transaction_interface";
 
 export async function convertCurrency(currency: string, amount: number): Promise<number> {
   try {
@@ -42,6 +43,10 @@ export function createTransaction(transaction: any, clientID: number, amount: nu
   addTransactionToDB(newTransaction);
   return newTransaction;
 }
+
+export const findTransaction = (transactionID: string): Transaction | undefined => {
+  return transactions.find((transaction) => transaction.transactionID === transactionID);
+};
 
 export function addTransactionToDB(transaction: transaction_interface): void {
   transactions.push(transaction);

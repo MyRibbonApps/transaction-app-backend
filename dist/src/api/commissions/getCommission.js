@@ -13,22 +13,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const index_1 = require("../../database/index");
+const transaction_1 = require("../../shared/utils/transaction");
 const router = express_1.default.Router();
 exports.default = router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { transactionID } = req.body.transaction;
-        console.log(transactionID);
-        const getTransactionDetails = index_1.transactions.find((transaction) => transaction.transactionID === transactionID);
+        const getTransactionDetails = (0, transaction_1.findTransaction)(transactionID);
         if (!getTransactionDetails) {
-            res.status(400).send({ message: "not found", data: null });
+            res.status(400).send({ message: "Transaction could not be found", data: null });
             return;
         }
         const transactionData = {
             amount: getTransactionDetails.commission.amount.toString(),
             currency: getTransactionDetails.commission.currency,
         };
-        res.status(200).send({ message: "sucess", data: transactionData });
+        res.status(200).send({ message: "success", data: transactionData });
     }
     catch (e) {
         res.status(400).send({ message: "something went wrong", data: null });

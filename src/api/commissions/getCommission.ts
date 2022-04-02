@@ -1,22 +1,25 @@
 import express, { Request, Response, Router } from "express";
+
 import { transactions } from "../../database/index";
+import { findTransaction } from "../../shared/utils/transaction";
 import Transaction from "../../ts/interfaces/transaction_interface";
+
 const router: Router = express.Router();
 
 export default router.post("/", async (req: Request, res: Response) => {
   try {
     const { transactionID }: { transactionID: string } = req.body.transaction;
-    console.log(transactionID);
-    const getTransactionDetails = transactions.find((transaction: Transaction) => transaction.transactionID === transactionID);
+    const getTransactionDetails = findTransaction(transactionID);
+
     if (!getTransactionDetails) {
-      res.status(400).send({ message: "not found", data: null });
+      res.status(400).send({ message: "Transaction could not be found", data: null });
       return;
     }
     const transactionData = {
       amount: getTransactionDetails.commission.amount.toString(),
       currency: getTransactionDetails.commission.currency,
     };
-    res.status(200).send({ message: "sucess", data: transactionData });
+    res.status(200).send({ message: "success", data: transactionData });
   } catch (e) {
     res.status(400).send({ message: "something went wrong", data: null });
   }

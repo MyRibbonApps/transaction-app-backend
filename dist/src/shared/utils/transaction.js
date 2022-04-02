@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addTransactionToDB = exports.createTransaction = exports.convertCurrency = void 0;
+exports.addTransactionToDB = exports.findTransaction = exports.createTransaction = exports.convertCurrency = void 0;
 const uniqid_1 = __importDefault(require("uniqid"));
 const commission_rules_config_1 = require("../../commission_rules.config");
 const index_1 = require("../api/index");
@@ -58,6 +58,10 @@ function createTransaction(transaction, clientID, amount) {
     return newTransaction;
 }
 exports.createTransaction = createTransaction;
+const findTransaction = (transactionID) => {
+    return index_2.transactions.find((transaction) => transaction.transactionID === transactionID);
+};
+exports.findTransaction = findTransaction;
 function addTransactionToDB(transaction) {
     index_2.transactions.push(transaction);
 }

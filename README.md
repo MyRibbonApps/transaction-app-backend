@@ -6,13 +6,8 @@
 ## General info
 This is the transaction commission application's backend rest api.
 
-Because I was free to do as I pleased, I developed a local database that functions similarly to a genuine database in this scenario. 
-I set it up so that I could keep transactions and clients. 
-
-And, because I had some spare time, I created one api end point for creating new transactions and another for retrieving transaction commission details.
-
 ## Commission rules
-I created a fully customizable configuration file for commission rules, so you could add 100 rules without having to change any logic in the main code, so whatever.
+A fully customizable configuration file for commission rules, so you could add 100 rules without having to change any logic in the main code, so whatever.
 	
 ## Transactions
 The endpoint for creating a new transaction is:
